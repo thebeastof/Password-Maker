@@ -3,9 +3,9 @@ import string
 import sys
 
 
-def answer_rand(list, num_chars):
+def answer_rand(input_list, num_chars):
     s = []
-    chars = ''.join(list)
+    chars = ''.join(input_list)
     if (num_chars % 2) == 0:
         for i in list:
             j = random.sample(chars, k=1)
@@ -38,6 +38,7 @@ def listmix(first_list, second_list):
         maxli = first_list
     elif len(first_list) == len(second_list):
         max = len(first_list)
+        maxli = []
     else:
         max = len(second_list)
         maxli = second_list
@@ -90,7 +91,7 @@ def main():
         password = listmix(u, f)
         password_str = ''.join(password)
         print('Here is your password: ', password_str)
-    if x > 16 or x < 8:
+    else:
         sys.exit()
 
 
