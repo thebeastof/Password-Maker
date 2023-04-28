@@ -5,20 +5,20 @@ import sys
 
 def answer_rand(list, num_chars):
     s = []
-
+    chars = ''.join(list)
     if (num_chars % 2) == 0:
         for i in list:
-            j = random.sample(i, k=1)
-            t = random.sample(i, k=1)
+            j = random.sample(chars, k=1)
+            t = random.sample(chars, k=1)
             s.append(j)
             s.append(t)
     else:
-        j = random.sample(i, k=1)
-
-        s.append(j)
+        for i in range(1):
+            j = random.sample(chars, k=1)
+            s.append(j)
         for i in range(len(list) - 1):
-            j = random.sample(i, k=1)
-            t = random.sample(i, k=1)
+            j = random.sample(chars, k=1)
+            t = random.sample(chars, k=1)
             s.append(j)
             s.append(t)
     s = [item for sublist in s for item in sublist]
@@ -69,7 +69,7 @@ def main():
         f = char_rand(x, r)
         password = listmix(u, f)
         password_str = ''.join(password)
-        print('Here is your password: ', password_str)
+        print('Here is your password. every other character is a random character while the 1st, 3rd, 5th, etc., characters are from your answers.:', password_str)
     elif x == 8 or x == 9:
         y = str(input("What is your name?: "))
         z = str(input("What is your city of birth?: "))
