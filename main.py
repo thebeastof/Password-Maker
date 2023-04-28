@@ -8,22 +8,28 @@ def answer_rand(list, num_chars):
 
     if (num_chars % 2) == 0:
         for i in list:
-            j = random.sample(i, k=2)
+            j = random.sample(i, k=1)
+            t = random.sample(i, k=1)
             s.append(j)
+            s.append(t)
     else:
         j = random.sample(i, k=1)
+
         s.append(j)
         for i in range(len(list) - 1):
-            j = random.sample(i, k=2)
+            j = random.sample(i, k=1)
+            t = random.sample(i, k=1)
             s.append(j)
-    return s
+            s.append(t)
+    s = [item for sublist in s for item in sublist]
+    return ''.join(s)
 
 def char_rand(total_chars, num_chars):
     l = []
-    chars = string.ascii_letters + string.digits
+    chars = string.ascii_letters + string.digits + string.punctuation
     for i in range(total_chars - num_chars):
-        l.append(random.choice(chars))
-    return l
+        l.extend(random.sample(chars, k=1))
+    return ''.join(l)
 
 def listmix(first_list, second_list):
     g = []
@@ -36,19 +42,19 @@ def listmix(first_list, second_list):
         max = len(second_list)
         maxli = second_list
        
-    x = 0
+    k = 0
     y = 1
     for i in range(max):
         try:
-            g.append(first_list[x])
-            g.append(second_list[x])
+            g.extend(first_list[k])
+            g.extend(second_list[k])
         except IndexError:
-            g.append(maxli[x])
+            g.extend(maxli[k])
         
-        x += 1
+        k += 1
         y += 1
-
-    return str(g)
+    g = [item for sublist in g for item in sublist]
+    return ''.join(g)
 
 def main():
     x = int(input("How many characters do you want your password to be(must be 8-16 characters for the program to work)?: "))
@@ -61,15 +67,19 @@ def main():
         t = [y, z, a]
         u = answer_rand(t, r)
         f = char_rand(x, r)
-        print(listmix(u, f))
-    if x == 8 or x == 9:
+        password = listmix(u, f)
+        password_str = ''.join(password)
+        print('Here is your password: ', password_str)
+    elif x == 8 or x == 9:
         y = str(input("What is your name?: "))
         z = str(input("What is your city of birth?: "))
         t = [y, z]
         u = answer_rand(t, r)
         f = char_rand(x, r)
-        print(listmix(u, f))
-    if x >= 13 or x <= 16:
+        password = listmix(u, f)
+        password_str = ''.join(password)
+        print('Here is your password: ', password_str)
+    elif x >= 14 or x <= 16:
         y = str(input("What is your name?: "))
         z = str(input("What is your city of birth?: "))
         a = str(input("What is your favourite food?: "))    
@@ -77,7 +87,9 @@ def main():
         t = [y, z, a, b]
         u = answer_rand(t, r)
         f = char_rand(x, r)
-        print(listmix(u, f))
+        password = listmix(u, f)
+        password_str = ''.join(password)
+        print('Here is your password: ', password_str)
     if x > 16 or x < 8:
         sys.exit()
 
