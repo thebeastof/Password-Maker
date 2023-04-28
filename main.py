@@ -7,7 +7,7 @@ def answer_rand(input_list, num_chars):
     s = []
     chars = ''.join(input_list)
     if (num_chars % 2) == 0:
-        for i in list:
+        for i in input_list:
             j = random.sample(chars, k=1)
             t = random.sample(chars, k=1)
             s.append(j)
@@ -16,7 +16,7 @@ def answer_rand(input_list, num_chars):
         for i in range(1):
             j = random.sample(chars, k=1)
             s.append(j)
-        for i in range(len(list) - 1):
+        for i in range(len(input_list) - 1):
             j = random.sample(chars, k=1)
             t = random.sample(chars, k=1)
             s.append(j)
@@ -25,6 +25,8 @@ def answer_rand(input_list, num_chars):
     return ''.join(s)
 
 def char_rand(total_chars, num_chars):
+    if total_chars <= num_chars:
+        raise ValueError("Please enter a valid number. Please do not enter a negative or zero.")
     l = []
     chars = string.ascii_letters + string.digits + string.punctuation
     for i in range(total_chars - num_chars):
