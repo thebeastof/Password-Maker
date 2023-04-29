@@ -81,7 +81,7 @@ def main():
         f = char_rand(x, r)
         password = listmix(u, f)
         password_str = ''.join(password)
-        print('Here is your password: ', password_str)
+        print('Here is your password. every other character is a random character while the 1st, 3rd, 5th, etc., characters are from your answers.:', password_str)
     elif x >= 14 or x <= 16:
         y = str(input("What is your name?: "))
         z = str(input("What is your city of birth?: "))
@@ -92,7 +92,7 @@ def main():
         f = char_rand(x, r)
         password = listmix(u, f)
         password_str = ''.join(password)
-        print('Here is your password: ', password_str)
+        print('Here is your password. every other character is a random character while the 1st, 3rd, 5th, etc., characters are from your answers.:', password_str)
     else:
         sys.exit()
 
