@@ -56,6 +56,7 @@ def listmix(first_list, second_list):
         
         k += 1
         y += 1
+        
     g = [item for sublist in g for item in sublist]
     return ''.join(g)
 
